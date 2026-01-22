@@ -52,22 +52,41 @@ function setState(state) {
     rightPanel.classList.add(state);
 }
 
-recognition.onresult = function (event) {
-    let text = ""
-    for (let i = 0; i < event.results.length; i++) {
-        text += event.results[i][0].transcript;
-    }
-    // transcript.textContent = text;
+// recognition.onresult = function (event) {
+//     let text = ""
+//     for (let i = 0; i < event.results.length; i++) {
+//         text += event.results[i][0].transcript;
+//     }
+//     // transcript.textContent = text;
 
-    let modifiedText = text.toLowerCase().replace(/[^a-z\s]/g, " ");
-    let words = modifiedText.split(/\s+/);
-    count = 0;
-    for (let word of words) {
-        if (word === "wait") {
-            count++;
+//     let modifiedText = text.toLowerCase().replace(/[^a-z\s]/g, " ");
+//     let words = modifiedText.split(/\s+/);
+//     count = 0;
+//     for (let word of words) {
+//         if (word === "wait") {
+//             count++;
+//         }
+//     }
+//     output.textContent = count
+// };
+
+recognition.onresult = function(event) {
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+        if (!event.results[i].isFinal) {
+            continue;
+        }
+
+        let text = event.results[i][0].transcript.toLowerCase().replace(/[^a-z\s]/g, " ");
+        let words = text.split(/\s+/);
+
+        for (let word of words) {
+            if (word === "wait") {
+                count++;
+            }
         }
     }
-    output.textContent = count
+
+    output.textContent = count;
 };
 
 recognition.onend = () => {
