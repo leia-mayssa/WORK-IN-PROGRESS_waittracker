@@ -79,6 +79,9 @@ html, body {
   transition: background-color 0.3s ease;
 
   position: relative;
+
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 
 @media (orientation: portrait) {
