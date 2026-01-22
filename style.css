@@ -97,6 +97,10 @@ html, body {
   background-color: #ccd4d4;
 }
 
+.right-panel:active {
+  background-color: #ccd4d4;
+}
+
 #right-panel-content {
   position: absolute;
   top: calc(50% - 42cqmin);
