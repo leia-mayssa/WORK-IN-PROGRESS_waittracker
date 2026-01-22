@@ -82,6 +82,7 @@ html, body {
 
   -webkit-tap-highlight-color: transparent;
   outline: none;
+  touch-action: manipulation;
 }
 
 @media (orientation: portrait) {
@@ -100,9 +101,11 @@ html, body {
   background-color: #ccd4d4;
 }
 
-.right-panel:active {
+.right-panel:active,
+.right-panel:focus-visible {
   background-color: #ccd4d4;
 }
+
 
 #right-panel-content {
   position: absolute;
