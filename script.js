@@ -11,7 +11,6 @@ const isAndroid = /Android/.test(navigator.userAgent);
 let isListening = false;
 let startTime;
 let count = 0;
-let processedResults = 0;
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
@@ -64,47 +63,6 @@ function setState(state) {
     rightPanel.classList.remove("idle", "recording", "result");
     rightPanel.classList.add(state);
 }
-
-// recognition.onresult = function (event) {
-//     let text = ""
-//     for (let i = 0; i < event.results.length; i++) {
-//         text += event.results[i][0].transcript;
-//     }
-//     // transcript.textContent = text;
-
-//     let modifiedText = text.toLowerCase().replace(/[^a-z\s]/g, " ");
-//     let words = modifiedText.split(/\s+/);
-//     count = 0;
-//     for (let word of words) {
-//         if (word === "wait") {
-//             count++;
-//         }
-//     }
-//     output.textContent = count
-// };
-
-// recognition.onresult = function(event) {
-//     if (!event.results[i].isFinal) {
-//             continue;
-//         }
-
-//     for (let i = processedResults; i < event.results.length; i++) {
-//         let text = event.results[i][0].transcript.toLowerCase().replace(/[^a-z\s]/g, " ");
-//         let words = text.split(/\s+/);
-
-//         for (let word of words) {
-//             if (word === "wait") {
-//                 count++;
-//             }
-//         }
-
-//         if (event.results[i].isFinal) {
-//             processedResults = i+1;
-//         }
-//     }
-
-//     output.textContent = count;
-// };
 
 recognition.onresult = (event) => {
     for (let i = event.resultIndex; i < event.results.length; i++) {
