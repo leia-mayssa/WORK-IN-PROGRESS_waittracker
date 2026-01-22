@@ -36,6 +36,14 @@ recognition.lang = "en-US";
 
 rightPanel.addEventListener("click", toggleListening);
 
+rightPanel.addEventListener("touchstart", () => {
+    rightPanel.style.backgroundColor = "#ccd4d4";
+});
+
+rightPanel.addEventListener("touchend", () => {
+    rightPanel.style.backgroundColor = "#b6c2c2";
+});
+
 function toggleListening() {
     if (isIos) {
         iosPopup.classList.add("show");
